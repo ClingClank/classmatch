@@ -14,29 +14,29 @@
 }
 
 .user-avatar-large {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: white;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.18);
 }
 
 .stat-card {
   background: var(--cm-card);
   border: 1px solid var(--cm-border);
   border-radius: 12px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(155, 208, 255, 0.15) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(155, 208, 255, 0.06) !important;
 }
 
 .stat-icon {
@@ -102,12 +102,13 @@
 .match-preview-card {
   background: var(--cm-card);
   border: 1px solid var(--cm-border);
-  transition: transform 0.2s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .match-preview-card:hover {
-  transform: translateX(4px);
+  transform: translateX(2px);
   border-color: #9bd0ff;
+  box-shadow: 0 2px 6px rgba(155, 208, 255, 0.06) !important;
 }
 
 .match-avatar {

@@ -138,7 +138,7 @@ export default function Dashboard() {
                         Enrolled Courses ({enrolledCourses.length})
                       </h5>
                       <Button
-                        variant="outline-primary"
+                        variant="primary"
                         size="sm"
                         onClick={() => navigate("/browse-courses")}
                       >

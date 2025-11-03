@@ -3,12 +3,12 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Navigation from "./components/Nav/Nav";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Dashboard from "./pages/Dashboard";
-import BrowseCourses from "./pages/BrowseCourses";
-import Matches from "./pages/Matches";
-import CreateGroup from "./pages/CreateGroup";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import BrowseCourses from "./pages/BrowseCourses/BrowseCourses";
+import Matches from "./pages/Matches/Matches";
+import CreateGroup from "./pages/CreateGroup/CreateGroup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
