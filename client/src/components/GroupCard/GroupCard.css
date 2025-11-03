@@ -1,0 +1,25 @@
+.group-card {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  border: 1px solid var(--cm-border);
+  background: var(--cm-card);
+}
+
+.group-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(155, 208, 255, 0.06) !important;
+}
+
+.group-details .detail-item {
+  display: flex;
+  align-items: center;
+  color: #e9ecef;
+}
+
+.group-card .card-title {
+  color: #fff;
+  font-weight: 600;
+}
+
+.group-card .card-text {
+  line-height: 1.6;
+}
