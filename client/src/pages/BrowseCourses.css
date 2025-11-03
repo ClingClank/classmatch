@@ -1,0 +1,48 @@
+.browse-courses-page {
+  max-width: 1400px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.search-icon {
+  background: var(--cm-card);
+  border-color: var(--cm-border);
+  color: #9bd0ff;
+}
+
+.search-input {
+  background: var(--cm-card) !important;
+  border-color: var(--cm-border) !important;
+  color: #e9ecef !important;
+}
+
+.search-input::placeholder {
+  color: #98a2b3;
+}
+
+.search-input:focus {
+  background: var(--cm-card) !important;
+  border-color: #9bd0ff !important;
+  color: #e9ecef !important;
+  box-shadow: 0 0 0 0.2rem rgba(155, 208, 255, 0.25);
+}
+
+.department-select {
+  background: var(--cm-card) !important;
+  border-color: var(--cm-border) !important;
+  color: #e9ecef !important;
+}
+
+.department-select:focus {
+  background: var(--cm-card) !important;
+  border-color: #9bd0ff !important;
+  box-shadow: 0 0 0 0.2rem rgba(155, 208, 255, 0.25);
+}
+
+.results-header {
+  border-bottom: 2px solid var(--cm-border);
+  padding-bottom: 0.5rem;
+}

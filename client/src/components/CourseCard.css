@@ -1,0 +1,32 @@
+.course-card {
+  border: 1px solid var(--cm-border);
+  background: var(--cm-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(155, 208, 255, 0.15) !important;
+}
+
+.course-card .card-title {
+  color: #fff;
+  font-weight: 600;
+}
+
+.course-details .course-detail-item {
+  background: transparent;
+  border-color: var(--cm-border);
+  color: #e9ecef;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.course-details .list-group-item:first-child {
+  border-top: none;
+}
+
+.course-details .list-group-item:last-child {
+  border-bottom: none;
+}

@@ -13,11 +13,11 @@ The app is built using **React (Vite)** for the frontend and styled with **Boots
 
 ## Features
 
-- **User Registration & Login** – Simple authentication with session persistence.  
-- **Classmate Matchmaking** – Instantly find other students taking the same courses.  
-- **Group Creation & Management** – Build or join study groups organized by course and interest.  
-- **Personal Dashboard** – View your active groups and upcoming study sessions at a glance.  
-- **Responsive Dark UI** – Elegant and accessible layout built on Bootswatch Darkly.  
+- **User Registration & Login** – Simple authentication with session persistence.
+- **Classmate Matchmaking** – Instantly find other students taking the same courses.
+- **Group Creation & Management** – Build or join study groups organized by course and interest.
+- **Personal Dashboard** – View your active groups and upcoming study sessions at a glance.
+- **Responsive Dark UI** – Elegant and accessible layout built on Bootswatch Darkly.
 
 ---
 
@@ -40,27 +40,57 @@ The app is built using **React (Vite)** for the frontend and styled with **Boots
 ├── .gitignore
 ├── docs/
 │   ├── assignment-refs.md
-│   ├── use-cases/           
-│   └── diagrams/            
-└── web/
+│   ├── use-cases/
+│   └── diagrams/
+└── client/
     ├── index.html
     ├── package.json
     ├── vite.config.js
     └── src/
         ├── main.jsx
         ├── App.jsx
-        ├── routes.jsx
         ├── style.css
         ├── lib/
-        │   └── api.js
+        │   ├── api.js
+        │   └── apiIntegration.js
+        ├── context/
+        │   └── AuthContext.jsx
+        ├── data/
+        │   └── sampleData.js
         ├── components/
-        │   └── Nav.jsx
+        │   ├── CourseCard/
+        │   │   ├── CourseCard.jsx
+        │   │   └── CourseCard.css
+        │   ├── GroupCard/
+        │   │   ├── GroupCard.jsx
+        │   │   └── GroupCard.css
+        │   ├── UserMatchCard/
+        │   │   ├── UserMatchCard.jsx
+        │   │   └── UserMatchCard.css
+        │   ├── Nav/
+        │   │   ├── Nav.jsx
+        │   │   └── Nav.css
+        │   └── ProtectedRoute/
+        │       └── ProtectedRoute.jsx
         └── pages/
-            ├── Login.jsx
-            ├── Signup.jsx
-            ├── Matches.jsx
-            ├── CreateGroup.jsx
-            └── Dashboard.jsx
+            ├── Login/
+            │   ├── Login.jsx
+            │   └── Login.css
+            ├── Signup/
+            │   ├── Signup.jsx
+            │   └── Signup.css
+            ├── Dashboard/
+            │   ├── Dashboard.jsx
+            │   └── Dashboard.css
+            ├── BrowseCourses/
+            │   ├── BrowseCourses.jsx
+            │   └── BrowseCourses.css
+            ├── Matches/
+            │   ├── Matches.jsx
+            │   └── Matches.css
+            └── CreateGroup/
+                ├── CreateGroup.jsx
+                └── CreateGroup.css
 ```
 
 ---
@@ -68,36 +98,40 @@ The app is built using **React (Vite)** for the frontend and styled with **Boots
 ## Getting Started
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/JamesRCall/classmatch.git
 cd classmatch/web
 ```
 
 ### 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Run the development server
+
 ```bash
 npm run dev
 ```
+
 Then open the link provided in your terminal (usually `http://localhost:5173`).
 
 ---
 
 ## Future Improvements
 
-- Integrate a backend (Node/Express or Firebase) for real user authentication.  
-- Replace local storage with a cloud database.  
-- Add chat or messaging functionality for group members.  
-- Implement calendar integration for availability scheduling.  
+- Integrate a backend (Node/Express or Firebase) for real user authentication.
+- Replace local storage with a cloud database.
+- Add chat or messaging functionality for group members.
+- Implement calendar integration for availability scheduling.
 - Enhance accessibility and responsive design further.
 
 ---
 
 ## Authors
 
-- **James Callender**  
-- **Parsa Hajiha**  
+- **James Callender**
+- **Parsa Hajiha**
 - **Tri Le**

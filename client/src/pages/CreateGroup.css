@@ -1,0 +1,42 @@
+.create-group-page {
+  max-width: 1000px;
+}
+
+.header-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+}
+
+.create-group-card {
+  background: var(--cm-card);
+  border: 1px solid var(--cm-border);
+  border-radius: 16px;
+}
+
+.create-group-card .form-control,
+.create-group-card .form-select {
+  background: #111214;
+  border-color: var(--cm-border);
+  color: #e9ecef;
+}
+
+.create-group-card .form-control:focus,
+.create-group-card .form-select:focus {
+  background: #111214;
+  border-color: #9bd0ff;
+  color: #e9ecef;
+  box-shadow: 0 0 0 0.2rem rgba(155, 208, 255, 0.25);
+}
+
+.create-group-card textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
