@@ -8,17 +8,34 @@ This document explains the schema, relationships, and purpose of every table.
 
 # 1. Conceptual Schema Diagram
 
-users ───< enrollments >─── courses
-│ │
-│ └───────────────────────┐
-│ │
-├──< availability_text │
-│ │
-├──< groups (owner_user_id) >───< group_members >── users
-│ │
-└──< notifications │
-│
-groups ───< messages ─── users
+### Users
+- Users can have many enrollments  
+- Users can have availability text  
+- Users can own many groups  
+- Users can receive many notifications  
+- Users can send and receive messages  
+- Users can be members of many groups through group_members  
+
+### Courses
+- Courses can have many enrollments  
+
+### Enrollments
+- Connects users to courses  
+
+### Groups
+- Each group has an owner user  
+- Groups can have many members through group_members  
+- Groups can have many messages  
+
+### Group Members
+- Links users to groups  
+
+### Messages
+- Messages are sent by users  
+- Messages belong to groups  
+
+### Notifications
+- Notifications belong to users  
 
 
 ---
