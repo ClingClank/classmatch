@@ -1,0 +1,99 @@
+CREATE DATABASE IF NOT EXISTS classmatch
+  DEFAULT CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+USE classmatch;
+
+CREATE TABLE users (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  name VARCHAR(120) NOT NULL,
+  major VARCHAR(120) NULL,
+  year VARCHAR(40) NULL,
+  avatar VARCHAR(8) NULL,
+  bio TEXT NULL,
+  study_prefs JSON NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE courses (
+  id VARCHAR(32) PRIMARY KEY,
+  code VARCHAR(32) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  section VARCHAR(16) NOT NULL,
+  instructor VARCHAR(120) NOT NULL,
+  schedule VARCHAR(120) NOT NULL,
+  students INT NOT NULL,
+  building VARCHAR(120) NULL,
+  room VARCHAR(32) NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE enrollments (
+  user_id BIGINT UNSIGNED NOT NULL,
+  course_id VARCHAR(32) NOT NULL,
+  enrolled_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id, course_id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE availability_text (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT UNSIGNED NOT NULL,
+  slot VARCHAR(120) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_avail_user (user_id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE `groups` (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  owner_user_id BIGINT UNSIGNED NOT NULL,
+  course_id VARCHAR(32) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description TEXT NULL,
+  meeting_time VARCHAR(120) NULL,
+  location VARCHAR(160) NULL,
+  max_members INT NULL,
+  tags JSON NULL,
+  is_archived TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_groups_owner (owner_user_id),
+  INDEX idx_groups_course (course_id),
+  FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE group_members (
+  group_id BIGINT UNSIGNED NOT NULL,
+  user_id BIGINT UNSIGNED NOT NULL,
+  role ENUM('member','admin') NOT NULL DEFAULT 'member',
+  status ENUM('active','removed') NOT NULL DEFAULT 'active',
+  joined_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (group_id, user_id),
+  INDEX idx_gm_user (user_id),
+  FOREIGN KEY (group_id) REFERENCES `groups`(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE messages (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  group_id BIGINT UNSIGNED NOT NULL,
+  user_id BIGINT UNSIGNED NOT NULL,
+  content TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_msg_group (group_id),
+  FOREIGN KEY (group_id) REFERENCES `groups`(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE notifications (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT UNSIGNED NOT NULL,
+  type VARCHAR(64) NOT NULL,
+  data JSON NULL,
+  is_read TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_notif_user (user_id, is_read),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
