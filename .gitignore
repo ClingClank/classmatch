@@ -8,3 +8,5 @@ server/.venv/
 server/__pycache__/
 server/*.pyc
 server/.env
+venv
+__pycache__/

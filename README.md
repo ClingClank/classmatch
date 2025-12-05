@@ -23,75 +23,66 @@ The app is built using **React (Vite)** for the frontend and styled with **Boots
 
 ## Tech Stack
 
-- **Framework:** React (Vite)
+- **Framework:** Client: React (Vite), Server: Flask
 - **Routing:** React Router DOM
-- **Styling:** Bootstrap 5 / Bootswatch Darkly
+- **Styling:** Bootstrap 5
 - **Storage:** LocalStorage API (client-side persistence)
-- **Language:** JavaScript (ES6 Modules)
+- **Languages:** JavaScript (ES6 Modules), Python
+- **Database:** MySQL
 
 ---
 
 ## Project Structure
 
+Top-level layout showing the main folders and where to find frontend and backend code.
+
 ```
 .
 ├── README.md
-├── CONTRIBUTING.md
 ├── .gitignore
-├── docs/
+├── docs/                      # design docs, use-cases, diagrams
 │   ├── assignment-refs.md
 │   ├── use-cases/
 │   └── diagrams/
-└── client/
-    ├── index.html
-    ├── package.json
-    ├── vite.config.js
-    └── src/
-        ├── main.jsx
-        ├── App.jsx
-        ├── style.css
-        ├── lib/
-        │   ├── api.js
-        │   └── apiIntegration.js
-        ├── context/
-        │   └── AuthContext.jsx
-        ├── data/
-        │   └── sampleData.js
-        ├── components/
-        │   ├── CourseCard/
-        │   │   ├── CourseCard.jsx
-        │   │   └── CourseCard.css
-        │   ├── GroupCard/
-        │   │   ├── GroupCard.jsx
-        │   │   └── GroupCard.css
-        │   ├── UserMatchCard/
-        │   │   ├── UserMatchCard.jsx
-        │   │   └── UserMatchCard.css
-        │   ├── Nav/
-        │   │   ├── Nav.jsx
-        │   │   └── Nav.css
-        │   └── ProtectedRoute/
-        │       └── ProtectedRoute.jsx
-        └── pages/
-            ├── Login/
-            │   ├── Login.jsx
-            │   └── Login.css
-            ├── Signup/
-            │   ├── Signup.jsx
-            │   └── Signup.css
-            ├── Dashboard/
-            │   ├── Dashboard.jsx
-            │   └── Dashboard.css
-            ├── BrowseCourses/
-            │   ├── BrowseCourses.jsx
-            │   └── BrowseCourses.css
-            ├── Matches/
-            │   ├── Matches.jsx
-            │   └── Matches.css
-            └── CreateGroup/
-                ├── CreateGroup.jsx
-                └── CreateGroup.css
+├── client/                    # React (Vite) frontend
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   └── src/
+│       ├── main.jsx
+│       ├── App.jsx
+│       ├── style.css
+│       ├── lib/               # api helpers & integration
+│       │   ├── api.js
+│       │   └── apiIntegration.js
+│       ├── context/           # auth & app context
+│       │   └── AuthContext.jsx
+│       ├── data/              # sample data for prototyping
+│       │   └── sampleData.js
+│       ├── components/        # UI components grouped by feature
+│       │   ├── CourseCard/
+│       │   ├── GroupCard/
+│       │   ├── UserMatchCard/
+│       │   ├── Nav/
+│       │   └── ProtectedRoute/
+│       └── pages/             # top-level app pages
+│           ├── Login/
+│           ├── Signup/
+│           ├── Dashboard/
+│           ├── BrowseCourses/
+│           ├── Matches/
+│           └── CreateGroup/
+└── server/                    # Backend (Flask/FastAPI) and DB config
+    ├── app.py                 # main server entrypoint
+    ├── config.py              # reads server/.env
+    ├── requirements.txt
+
 ```
+
+Notes:
+
+- client/: frontend source (run with npm run dev inside client/)
+- server/: backend service; ensure server/.env contains DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME
 
 ---
 
@@ -101,32 +92,64 @@ The app is built using **React (Vite)** for the frontend and styled with **Boots
 
 ```bash
 git clone https://github.com/JamesRCall/classmatch.git
-cd classmatch/web
+cd classmatch
 ```
 
-### 2. Install dependencies
+### 2. Client (frontend) — located in client/
+
+- Purpose: Frontend React app (Vite). Use these commands from the repository root.
 
 ```bash
+cd client
 npm install
-```
-
-### 3. Run the development server
-
-```bash
 npm run dev
 ```
 
-Then open the link provided in your terminal (usually `http://localhost:5173`).
+Open the link provided in your terminal (usually http://localhost:5173).
+
+### 3. Server (backend) — located in server/
+
+- Purpose: Python-based backend (see server/). The server reads configuration from server/.env (DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME). Ensure you create or update server/.env before starting the server.
+
+Example server/.env (place inside the server directory):
+
+```
+DB_USER=root
+DB_PASS=your_db_password
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=classmatch
+```
+
+Basic steps to run the server:
+
+```bash
+cd server
+# create and activate a virtual environment
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS / Linux
+source venv/bin/activate
+
+# install dependencies
+pip install -r requirements.txt
+
+# start the server
+flask run
+```
+
+Notes:
+
+- The server explicitly loads environment variables from server/.env (see server/config.py). Make sure DB\_\* values are set there.
 
 ---
 
-## Future Improvements
+## Backend (server) — overview
 
-- Integrate a backend (Node/Express or Firebase) for real user authentication.
-- Replace local storage with a cloud database.
-- Add chat or messaging functionality for group members.
-- Implement calendar integration for availability scheduling.
-- Enhance accessibility and responsive design further.
+- Location: server/
+- Config: server/.env (environment variables are loaded by server/config.py)
+- Typical env variables: DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME
 
 ---
 
