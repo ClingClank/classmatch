@@ -256,7 +256,7 @@ export default function CreateGroup() {
                       Create Study Group
                     </Button>
                     <Button
-                      variant="outline-secondary"
+                      variant="btn btn-outline-danger"
                       type="button"
                       onClick={() => window.history.back()}
                     >

@@ -6,7 +6,7 @@
 
 .course-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 2px 6px rgba(155, 208, 255, 0.06) !important;
+  box-shadow: 0 2px 6px rgba(28, 92, 255, 0.06) !important;
 }
 
 .course-card .card-title {
@@ -29,4 +29,10 @@
 
 .course-details .list-group-item:last-child {
   border-bottom: none;
+}
+
+.course-card .badge.bg-info {
+  background-color: #1c5cff !important;
+  color: #ffffff !important;
+  border: none !important;
 }
