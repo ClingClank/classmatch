@@ -155,7 +155,7 @@ Notes:
 
 ## Testing
 
-Unit, integration and system-style tests are provided using `pytest`.
+Unit, integration, and system validation tests are provided using `pytest`. Tests use an in-memory SQLite database and patch the application's DB engine so they run without a local MySQL server.
 
 Run tests from the project root:
 
@@ -174,8 +174,6 @@ pip install -r server/requirements.txt
 # Run test
 pytest
 ```
-
-Tests use an in-memory SQLite database and patch the application's DB engine so they run without a local MySQL server.
 
 ---
 
