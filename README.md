@@ -160,9 +160,18 @@ Unit, integration and system-style tests are provided using `pytest`.
 Run tests from the project root:
 
 ```bash
+# Create virtual environment 
+# (Skip this step there's venv in server folder already)
 python -m venv server/venv
-source server/venv/bin/activate
+
+# Activate created enviroment
+server/venv/Scripts/activate # Windows
+source server/venv/bin/activate # Mac / Linux
+
+#Install depdendencies
 pip install -r server/requirements.txt
+
+# Run test
 pytest
 ```
 

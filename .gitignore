@@ -10,3 +10,6 @@ server/*.pyc
 server/.env
 venv
 __pycache__/
+tests/__pycache__/
+server/api/queries/__pycache__/
+server/domain/__pycache__/
