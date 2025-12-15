@@ -88,7 +88,7 @@ def get_user_matches(user_id: int):
                 )
                 SELECT u.id, u.name, u.email, u.avatar, u.major, u.year,
                        COUNT(*) AS shared_courses,
-                       GROUP_CONCAT(c.code ORDER BY c.code SEPARATOR ', ') AS shared_course_codes
+                       GROUP_CONCAT(c.code, ', ') AS shared_course_codes
                 FROM enrollments e
                 JOIN user_courses uc ON e.course_id = uc.course_id
                 JOIN users u ON e.user_id = u.id
